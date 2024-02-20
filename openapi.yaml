@@ -68,5 +68,4 @@ components:
                 type: string
               created_time:
                 type: string
-              # Add more properties as needed
       description: List of tickets
