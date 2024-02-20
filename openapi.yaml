@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Zoho Desk Plugin
   description: Interact with Zoho Desk API to search tickets.
-  version: "v1"
+  version: "1.0"
 servers:
   - url: https://desk.zoho.eu/api/v1
 paths:
