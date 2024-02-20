@@ -1,0 +1,72 @@
+openapi: 3.0.1
+info:
+  title: Zoho Desk Plugin
+  description: Interact with Zoho Desk API to search tickets.
+  version: 'v1'
+servers:
+  - url: https://desk.zoho.eu/api/v1
+paths:
+  /search-tickets:
+    get:
+      operationId: searchTickets
+      summary: Search tickets in Zoho Desk
+      parameters:
+        - name: search_query
+          in: query
+          description: Search query for tickets
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of tickets to retrieve (default: 10)
+          schema:
+            type: integer
+            default: 10
+        - name: created_time_range
+          in: query
+          description: Time range for ticket creation (optional)
+          schema:
+            type: string
+        - name: account_name
+          in: query
+          description: Filter tickets by account name (optional)
+          schema:
+            type: string
+        - name: account_id
+          in: query
+          description: Filter tickets by account ID (optional)
+          schema:
+            type: string
+        - name: contact_name
+          in: query
+          description: Filter tickets by contact name (optional)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchTicketsResponse'
+components:
+  schemas:
+    SearchTicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            type: object
+            properties:
+              ticket_id:
+                type: string
+              subject:
+                type: string
+              description:
+                type: string
+              created_time:
+                type: string
+              # Add more properties as needed
+          description: List of tickets
