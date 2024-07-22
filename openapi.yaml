@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://desk.zoho.eu/api/v1
 paths:
-  /search:
+  /tickets/search:
     get:
       operationId: searchTickets
       summary: Search tickets in Zoho Desk
