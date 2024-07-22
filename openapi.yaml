@@ -6,15 +6,14 @@ info:
 servers:
   - url: https://desk.zoho.eu/api/v1
 paths:
-  /search-tickets:
+  /search:
     get:
       operationId: searchTickets
       summary: Search tickets in Zoho Desk
       parameters:
-        - name: search_query
+        - name: _all
           in: query
-          description: Search query for tickets
-          required: true
+          description: Search for any text throughout the entire ticket
           schema:
             type: string
         - name: limit
@@ -23,24 +22,54 @@ paths:
           schema:
             type: integer
             default: 10
-        - name: created_time_range
+        - name: createdTimeRange
           in: query
           description: Time range for ticket creation (optional)
           schema:
-            type: string
-        - name: account_name
+            type: timestamp
+        - name: accountName
           in: query
           description: Filter tickets by account name (optional)
           schema:
             type: string
-        - name: account_id
+        - name: accountId
           in: query
           description: Filter tickets by account ID (optional)
           schema:
             type: string
-        - name: contact_name
+        - name: contactName
           in: query
           description: Filter tickets by contact name (optional)
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Category in the ticket (optional)
+          schema:
+            type: string
+        - name: channel
+          in: query
+          description: Channel through which the ticket was received (optional)
+          schema:
+            type: string
+        - name: priority
+          in: query
+          description: Priority of the ticket (optional)
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Status of the ticket (optional)
+          schema:
+            type: string
+        - name: subject
+          in: query
+          description: subject of the ticket in the help desk (optional)
+          schema:
+            type: string
+        - name: description
+          in: query
+          description: description of the ticket in the help desk (optional)
           schema:
             type: string
       responses:
